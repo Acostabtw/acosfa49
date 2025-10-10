@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Registro - AcosFa 49</title>
+  <link rel="stylesheet" href="stylesi.css" />
+</head>
+<body>
+  <header class="site-header" aria-label="Encabezado principal">
+    <div class="container header-inner">
+      <a class="brand" href="vmpacosfa.html" aria-label="AcosFa 49 - Inicio">
+        <img src="img/logo acosfa.jpg" alt="AcosFa 49 - Logo">
+      </a>
+      
+      <a href="mailto:contacto@acosfa49.com" class="btn-contactar">Contactar</a>
+    </div>
+  </header>
+  <div class="container">
+    <h2>Registro de Usuario</h2>
+    <form id="registroForm" onsubmit="handleRegistro(event)">
+      <div class="field">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
+      </div>
+      <div class="field">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required placeholder="tucorreo@dominio.com" />
+      </div>
+      <div class="field">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required placeholder="Tu contraseña" />
+      </div>
+      <div class="actions">
+        <button type="submit">Registrarse</button>
+      </div>
+      <a href="login3.html" class="registro-link" aria-label="Iniciar sesión">¿Ya tienes cuenta? Iniciar sesión</a>
+      <div id="status" class="error" role="status" aria-live="polite" style="display:none;"></div>
+    </form>
+  </div>
+
+  <script>
+    function handleRegistro(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const status = document.getElementById('status');
+
+      // SIMULACIÓN: validación básica en el cliente
+      if (nombre && email && password) {
+        // Aquí iría la llamada a backend para guardar el usuario.
+        // Ejemplo ficticio de éxito:
+        status.style.display = 'none';
+        alert('¡Registro exitoso!');
+        window.location.href = 'login3.html';
+      } else {
+        status.textContent = 'Completa todos los campos.';
+        status.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

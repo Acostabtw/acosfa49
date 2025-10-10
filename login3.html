@@ -1,0 +1,67 @@
+   <!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="stylesl.css" />
+</head>
+<body>
+  <header class="site-header" aria-label="Encabezado principal">
+    <div class="container header-inner">
+      <a class="brand" href="vmpacosfa.html" aria-label="AcosFa 49 - Inicio">
+        <img src="img/logo acosfa.jpg" alt="AcosFa 49 - Logo">
+      </a>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <div class="field">
+        <label for="email">Correo electronico</label>
+        <input type="email" id="email" name="email" required placeholder="tucorreo@dominio.com" />
+      </div>
+      <div class="field">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required placeholder="Tu contraseña" />
+      </div>
+      <div class="actions">
+         <button type="submit">Iniciar Sesión</button>
+        
+        </div>
+        <!-- Enlace a registro si lo necesitas -->
+        <a href="registro.html" class="registro-link" aria-label="Regístrate"> ¿Aun no tienes cuenta? Registrarte</a>
+      </div>
+      <div id="status" class="error" role="status" aria-live="polite" style="display:none;"></div>
+    </form>
+  </div>
+
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const status = document.getElementById('status');
+
+      // SIMULACIÓN: a) validar en el cliente (solo para demo)
+      if (email && password) {
+        // Aquí iría la llamada a backend para validar credenciales.
+        // Si la validación es exitosa, redirige a index.html
+        // Ejemplo ficticio de éxito:
+        const isValid = true; // ← reemplaza con tu lógica real
+
+        if (isValid) {
+          sessionStorage.setItem('usuarioLogueado', email);
+          window.location.href = 'vmpacosfa.html';
+        } else {
+          status.textContent = 'Credenciales incorrectas. Intenta de nuevo.';
+          status.style.display = 'block';
+        }
+      } else {
+        status.textContent = 'Completa todos los campos.';
+        status.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

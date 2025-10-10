@@ -1,0 +1,61 @@
+   :root {
+  --color-primary: #1e73be;
+  --color-secondary: #0e3a8a;
+  --bg: #ffffff;
+  --text: #000000;
+  --muted: #000000;
+  --card: #ffffff;
+  --radius: 8px;
+}
+
+.fuente {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 1.2rem;
+  color: #545e63;
+  text-align: center;
+
+}
+
+.fondo-imagen {
+  background-image: url('.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; color: var(--text); background: var(--bg); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+
+.container { width: 90%; max-width: 1100px; margin: 0 auto; }
+
+.site-header { background: #fff; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+.main-nav ul { list-style: none; display: flex; gap: 16px; padding: 0; margin: 0; }
+.main-nav a { text-decoration: none; color: var(--text); padding: 8px 12px; border-radius: 6px; }
+.main-nav a:hover, .btn:hover { background: #f3f4f6; }
+.brand img { display: block; }
+
+.btn { display: inline-block; padding: 10px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+.btn-primary { background: var(--color-primary); color: #000000; border: 0; }
+.btn-secondary { background: #3f6cc7; color: #000000; border: 0;}
+.btn-ghost { background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary); }
+
+.hero { padding: 48px 0; background: #ffffff; text-align: center;}
+.hero h1 { margin: 0 0 12px; font-size: 2rem; }
+.hero p { color: var(--muted); font-size: 1.05rem; }
+
+.productos { padding: 32px 0; }
+.producto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.producto-card { background: var(--card); padding: 16px; border-radius: var(--radius); box-shadow: 0 1px 3px rgb(0, 0, 0); }
+.producto-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 6px; }
+
+.precio { font-weight: 700; margin: 8px 0; }
+.disponibilidad { color: #16a34a; font-weight: 600; }
+
+.about, .contact { padding: 24px 0; }
+.site-footer { background: #111; color: #ddd; padding: 20px 0; text-align: center; }
+
+@media (max-width: 700px) {
+  .header-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .main-nav { width: 100%; }
+  .main-nav ul { flex-wrap: wrap; gap: 8px; }
+}

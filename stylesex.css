@@ -1,0 +1,56 @@
+ /* Reset básico */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f5f7fa;
+      color: #1f2937;
+    }
+
+    /* Contenedor central */
+    .centro {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+
+    /* Tarjeta/abstracto centrado para el mensaje */
+    .mensaje {
+      text-align: center;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 48px 40px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .titulo {
+      font-size: 3rem;
+      line-height: 1.08;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #16a34a; /* verde suave para indicar éxito */
+    }
+
+    .sub {
+      font-size: 1.25rem;
+      color: #374151;
+    }
+
+    /* Estilo para el emoji de texto */
+    .emoticono {
+      display: inline-block;
+      margin-top: 14px;
+      font-family: "Arial", sans-serif;
+      font-size: 1.6rem;
+      transform: translateY(2px);
+    }
+
+    /* Adaptabilidad para pantallas pequeñas */
+    @media (max-width: 600px) {
+      .titulo { font-size: 2.4rem; }
+      .mensaje { padding: 34px 20px; }
+    }

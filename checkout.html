@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AcosFa 49 - Distribuidor de Licores</title>
+  <meta name="description" content="Distribuidor mayorista de licores Cayetano Farias e Hijos en el Centro-Oeste de Maturín. Atención puntual y productos con sello de calidad." />
+  <link rel="stylesheet" href="stylesc.css" />
+
+  <!-- JSON-LD de empresa (ejemplo) -->
+  <script type="application/ld+json">
+    { 
+    "@context": "https://schema.org",
+    "@type": "Corporation",
+    "name": "AcosFa 49",
+    "url": "https://tusitio.com",
+    "logo": "https://tusitio.com/logo.png",
+    "description": "Distribuidor mayorista de licores Cayetano Farias e Hijos en Maturín.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "dirección",
+      "addressLocality": "Maturín",
+      "addressRegion": "Monagas",
+      "postalCode": "00000",
+      "addressCountry": "VE"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+58-000-0000000",
+      "contactType": "customer service",
+      "areaServed": "VE"
+    },
+    "founder": "AcosFa 49",
+    "foundingDate": "2016"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" aria-label="Encabezado principal">
+    <div class="container header-inner">
+      <a class="brand" href="vmpacosfa.html" aria-label="AcosFa 49 - Inicio">
+        <img src="img/logo acosfa.jpg" alt="AcosFa 49 - Logo" width="120" height="40">
+      </a>
+      <nav class="main-nav" aria-label="Menú principal">
+        <ul>
+          <li><a href="vmpacosfa.html">Inicio</a></li>
+          <li><a href="acerca.html">Acerca de</a></li>
+          <li><a href="ejecutivos.html">Ejecutivos</a></li>
+        </ul>
+      </nav>
+      <a href="mailto:contacto@acosfa49.com" class="btn-contactar">Contactar</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="producto" aria-label="Producto principal">
+      <div>
+        <img id="producto-imagen" src="img/img2/imgg/img/parrandera.jpg" alt="Imagen del producto" style="max-width:100%; height:auto; border-radius:8px;">
+      </div>
+      <div>
+        <h1>Producto Estrella</h1>
+        <p class="descripcion">Un dulce sabor para un buen paladar..</p>
+        <p class="precio">Precio: <strong>$5.00</strong></p>
+        <form class="form-pago" action="/procesar-pago" method="post">
+          <label for="cantidad" style="font-weight:600;">Cantidad</label>
+          <input id="cantidad" name="cantidad" type="number" min="1" value="1" style="width: 80px; padding:6px;" required>
+         
+          <a href="exito.html" class="btn-pagar">Pagar Ahora</a>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const producto = params.get('producto');
+    const precio = params.get('precio');
+    const imagen = params.get('imagen');
+
+    // Si hay datos, actualiza el contenido
+    if (producto && precio) {
+      document.querySelector('h1').textContent = producto;
+      document.querySelector('.precio').innerHTML = `Precio: <strong>$${precio}</strong>`;
+    }
+    if (imagen) {
+      document.getElementById('producto-imagen').src = imagen;
+    }
+  </script>
+</body>
+</html>
+
+ <footer style="
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 40px 0 24px 0;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+">
+  <div>
+    En AcosFa 49 nos preocupamos por atender de<br>
+    manera puntual a nuestra distinguida clientela.
+  </div>
+  <div>
+    En AcosFa 49 te brindamos los mejores licores<br>
+    con el sello de calidad de los productos<br>
+    Cayetano Farias e Hijos.
+  </div>
+  <div>
+    Somos tu proveedor de confianza desde el año<br>
+    2016 en el Centro - Oeste de la ciudad de Maturín.
+  </div>

@@ -1,0 +1,96 @@
+ .site-footer {
+    background: #000000;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 1px solid #e5e7eb;
+  }
+  .site-footer p {
+    margin: 0;
+    color: #6c757d;
+  }
+h1 {
+  font-size: 2.5rem;
+  color: #000000;
+  margin-bottom: 20px;  
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.25rem;
+  color: #5e5e5ee1
+}
+
+.site-header {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .brand img {
+      display: block;
+      height: 48px;
+      width: auto;
+    }
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      padding: 0;
+      margin: 0;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1.05rem;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .main-nav a:hover {
+      background: #f3f4f6;
+    }
+    .btn-contactar {
+      background: #1e73be;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      font-size: 1rem;
+      margin-left: 32px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-contactar:hover {
+      background: #155a96;
+    }
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .main-nav ul {
+        gap: 16px;
+      }
+      .btn-contactar {
+        margin-left: 0;
+        margin-top: 8px;
+      }
+    }

@@ -1,0 +1,89 @@
+.site-header {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .brand img {
+      display: block;
+      height: 48px;
+      width: auto;
+    }
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      padding: 0;
+      margin: 0;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1.05rem;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .main-nav a:hover {
+      background: #f3f4f6;
+    }
+    .btn-contactar {
+      background: #1e73be;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      font-size: 1rem;
+      margin-left: 32px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-contactar:hover {
+      background: #155a96;
+    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0 20px; }
+    .producto { max-width: 800px; margin: 40px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .producto h1 { font-size: 2rem; margin: 0; }
+    .precio { font-size: 1.5rem; color: #2a9d8f; }
+    .descripcion { color: #555; }
+    .form-pago { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; margin-top: 10px; }
+    .btn-pagar {
+      padding: 12px 18px;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-pagar:hover { background: #1e7a3f; }
+    @media (max-width: 800px) {
+      .producto { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .main-nav ul {
+        gap: 16px;
+      }
+      .btn-contactar {
+        margin-left: 0;
+        margin-top: 8px;
+      }
+    }
