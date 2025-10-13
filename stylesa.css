@@ -72,3 +72,15 @@
         font-size: 1.2rem;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
+    .home{
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .in-flex {
+      flex: 1;
+      padding: 25px;
+      margin: 20px;
+      min-width: 250px;
+    }
