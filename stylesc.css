@@ -87,3 +87,14 @@
         margin-top: 8px;
       }
     }
+
+    .home {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .in-flex {
+      flex: 1;
+      padding: 25px;
+      margin: 20px;
+      min-width: 250px;
+    }
