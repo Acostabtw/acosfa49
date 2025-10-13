@@ -54,3 +54,14 @@
       .titulo { font-size: 2.4rem; }
       .mensaje { padding: 34px 20px; }
     }
+
+    .home {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .in-flex {
+      flex: 1;
+      padding: 25px;
+      margin: 20px;
+      min-width: 250px;
+    }
