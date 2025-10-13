@@ -59,3 +59,14 @@ html, body { margin: 0; padding: 0; color: var(--text); background: var(--bg); f
   .main-nav { width: 100%; }
   .main-nav ul { flex-wrap: wrap; gap: 8px; }
 }
+
+.home {
+  display: flex;
+  flex-wrap: wrap;
+}
+.in-flex {
+  flex: 1;
+  min-width: 250px;
+  padding: 25px;
+  margin: 20px;
+}
