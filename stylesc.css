@@ -94,7 +94,7 @@
     }
     .in-flex {
       flex: 1;
-      padding: 25px;
+      /* padding: 25px;
       margin: 20px;
-      min-width: 250px;
+      min-width: 250px; */
     }
