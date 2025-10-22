@@ -98,3 +98,14 @@
       margin: 20px;
       min-width: 250px; */
     }
+
+     .homes {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .in-flexs {
+      flex: 1;
+      /* padding: 25px;
+      margin: 20px;
+      min-width: 250px; */
+    }
