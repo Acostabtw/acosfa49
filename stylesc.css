@@ -54,7 +54,7 @@
       background: #155a96;
     }
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    .producto { max-width: 800px; margin: 40px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .producto { max-width: 800px; margin: 40px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; justify-content: center; align-items: center; }
     .producto h1 { font-size: 2rem; margin: 0; }
     .precio { font-size: 1.5rem; color: #2a9d8f; }
     .descripcion { color: #555; }
@@ -108,4 +108,13 @@
       /* padding: 25px;
       margin: 20px;
       min-width: 250px; */
+    }
+
+    #producto-imagen {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      justify-content: center;
+      align-items: center;
+
     }
