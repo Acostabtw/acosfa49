@@ -34,9 +34,9 @@ html, body { margin: 0; padding: 0; color: var(--text); background: var(--bg); f
 .main-nav a:hover, .btn:hover { background: #f3f4f6; }
 .brand img { display: block; }
 
-.btn { display: inline-block; padding: 10px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+.btn { display: inline-block; padding: 10px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 5px; cursor: pointer; }
 .btn-primary { background: var(--color-primary); color: #000000; border: 0; }
-.btn-secondary { background: #3f6cc7; color: #000000; border: 0;}
+.btn-secondary { background: #3f6cc7; color: #000000; border: 0; padding-left:15px ;}
 .btn-ghost { background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary); }
 
 .hero { padding: 48px 0; background: #ffffff; text-align: center;}
