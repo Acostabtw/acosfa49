@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3050;
@@ -12,13 +13,13 @@ app.use(express.json());
 // Servir archivos estáticos desde el directorio actual
 app.use(express.static(__dirname));
 
-// Conexión a la base de datos MySQL local
+// Conexión a la base de datos MySQL
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'acosfa',
-    port: 3306
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'acosfa',
+    port: process.env.DB_PORT || 3306
 });
 
 db.connect((err) => {
@@ -27,7 +28,7 @@ db.connect((err) => {
         console.error('Asegúrate de que MySQL Workbench esté corriendo y que la base de datos "acosfa" exista.');
         return;
     }
-    console.log('✅ Conectado a la base de datos MySQL local "acosfa".');
+    console.log(`✅ Conectado a la base de datos MySQL "${process.env.DB_NAME || 'acosfa'}".`);
 });
 
 // Manejo de errores globales del servidor
