@@ -14,10 +14,10 @@ app.use(express.static(__dirname));
 
 // Conexión a la base de datos MySQL
 const db = mysql.createConnection({
-    host: process.env.MYSQLHOST || 'tu_host_de_railway',
+    host: process.env.MYSQLHOST || 'localhost',
     user: process.env.MYSQLUSER || 'root',
-    password: process.env.MYSQLPASSWORD || 'tu_password_de_railway',
-    database: process.env.MYSQLDATABASE || 'railway',
+    password: process.env.MYSQLPASSWORD || '',
+    database: process.env.MYSQLDATABASE || 'acosfa',
     port: process.env.MYSQLPORT || 3306
 });
 
