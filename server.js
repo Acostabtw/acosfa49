@@ -1,5 +1,5 @@
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
+const mysql = require('mysql2');
 const cors = require('cors');
 const path = require('path');
 
@@ -12,28 +12,20 @@ app.use(express.json());
 // Servir archivos estáticos desde el directorio actual
 app.use(express.static(__dirname));
 
-// Conexión a la base de datos SQLite
-const dbPath = path.resolve(__dirname, 'acosfa.db');
-const db = new sqlite3.Database(dbPath, (err) => {
+// Conexión a la base de datos MySQL
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'acosfa'
+});
+
+db.connect((err) => {
     if (err) {
-        console.error('Error al conectar con la base de datos:', err.message);
-    } else {
-        console.log('Conectado a la base de datos acosfa.db.');
-        // Crear tabla registro si no existe
-        db.run(`CREATE TABLE IF NOT EXISTS registro (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nombre TEXT NOT NULL,
-            apellido TEXT NOT NULL,
-            correo TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL
-        )`, (err) => {
-            if (err) {
-                console.error('Error al crear la tabla registro:', err.message);
-            } else {
-                console.log('Tabla registro lista.');
-            }
-        });
+        console.error('Error al conectar con MySQL:', err.message);
+        return;
     }
+    console.log('Conectado a la base de datos MySQL acosfa.');
 });
 
 // Endpoint: Registrar nuevo usuario
@@ -44,16 +36,14 @@ app.post('/registro', (req, res) => {
         return res.status(400).json({ error: 'Todos los campos son obligatorios.' });
     }
 
-    const sql = `INSERT INTO registro (nombre, apellido, correo, password) VALUES (?, ?, ?, ?)`;
-    db.run(sql, [nombre, apellido, correo, password], function(err) {
+    const sql = `INSERT INTO registro (nombre, apellido, correo, contraseña) VALUES (?, ?, ?, ?)`;
+    db.query(sql, [nombre, apellido, correo, password], (err, results) => {
         if (err) {
-            // Si el correo ya existe, SQLite dará un error de CONSTRAINT UNIQUE
-            if (err.message.includes('UNIQUE constraint failed')) {
-                return res.status(409).json({ error: 'El correo ya está registrado.' });
-            }
-            return res.status(500).json({ error: 'Error interno del servidor.' });
+            console.error(err);
+            // Manejo básico de error
+            return res.status(500).json({ error: 'Error al registrar en la base de datos.' });
         }
-        res.status(201).json({ message: 'Usuario registrado exitosamente', id: this.lastID });
+        res.status(201).json({ message: 'Usuario registrado exitosamente', id: results.insertId });
     });
 });
 
@@ -65,13 +55,15 @@ app.post('/login', (req, res) => {
         return res.status(400).json({ error: 'Correo y contraseña son obligatorios.' });
     }
 
-    const sql = `SELECT * FROM registro WHERE correo = ? AND password = ?`;
-    db.get(sql, [correo, password], (err, row) => {
+    const sql = `SELECT * FROM registro WHERE correo = ? AND contraseña = ?`;
+    db.query(sql, [correo, password], (err, results) => {
         if (err) {
+            console.error(err);
             return res.status(500).json({ error: 'Error interno del servidor.' });
         }
-        if (row) {
+        if (results.length > 0) {
             // Usuario encontrado
+            const row = results[0];
             res.status(200).json({ message: 'Inicio de sesión exitoso', usuario: { nombre: row.nombre, correo: row.correo } });
         } else {
             // Usuario no encontrado o contraseña incorrecta
