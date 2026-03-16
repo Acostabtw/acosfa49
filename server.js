@@ -23,10 +23,20 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if (err) {
-        console.error('Error al conectar con MySQL:', err.message);
+        console.error('!!! ERROR AL CONECTAR CON MYSQL:', err.message);
+        console.error('Asegúrate de que MySQL Workbench esté corriendo y que la base de datos "acosfa" exista.');
         return;
     }
-    console.log('Conectado a la base de datos MySQL acosfa.');
+    console.log('✅ Conectado a la base de datos MySQL local "acosfa".');
+});
+
+// Manejo de errores globales del servidor
+process.on('uncaughtException', (err) => {
+    console.error('❌ EXCEPCIÓN NO CAPTURADA:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('❌ RECHAZO NO MANEJADO en:', promise, 'razón:', reason);
 });
 
 // Endpoint: Registrar nuevo usuario
