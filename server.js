@@ -12,13 +12,13 @@ app.use(express.json());
 // Servir archivos estáticos desde el directorio actual
 app.use(express.static(__dirname));
 
-// Conexión a la base de datos MySQL
+// Conexión a la base de datos MySQL local
 const db = mysql.createConnection({
-    host: process.env.MYSQLHOST || 'localhost',
-    user: process.env.MYSQLUSER || 'root',
-    password: process.env.MYSQLPASSWORD || '',
-    database: process.env.MYSQLDATABASE || 'acosfa',
-    port: process.env.MYSQLPORT || 3306
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'acosfa',
+    port: 3306
 });
 
 db.connect((err) => {
