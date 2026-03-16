@@ -25,12 +25,16 @@
         <h2>Registro de Usuario</h2>
         <form id="registroForm" onsubmit="handleRegistro(event)">
           <div class="field">
-            <label for="nombre">Nombre completo</label>
+            <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
           </div>
           <div class="field">
-            <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" required placeholder="tucorreo@dominio.com" />
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" required placeholder="Tu apellido" />
+          </div>
+          <div class="field">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" required placeholder="tucorreo@dominio.com" />
           </div>
           <div class="field">
             <label for="password">Contraseña</label>
@@ -46,21 +50,47 @@
     </div>
   </section>
   <script>
-    function handleRegistro(e) {
+    async function handleRegistro(e) {
       e.preventDefault();
       const nombre = document.getElementById('nombre').value;
-      const email = document.getElementById('email').value;
+      const apellido = document.getElementById('apellido').value;
+      const correo = document.getElementById('correo').value;
       const password = document.getElementById('password').value;
       const status = document.getElementById('status');
 
-      // SIMULACIÓN: validación básica en el cliente
-      if (nombre && email && password) {
-        // Aquí iría la llamada a backend para guardar el usuario.
-        // Ejemplo ficticio de éxito:
+      if (nombre && apellido && correo && password) {
         status.style.display = 'none';
-        alert('¡Registro exitoso!');
-        window.location.href = 'login3.html';
+
+        try {
+          const response = await fetch('http://localhost:3000/registro', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre, apellido, correo, password })
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            status.style.color = 'green';
+            status.textContent = 'Registro exitoso. Redirigiendo...';
+            status.style.display = 'block';
+            setTimeout(() => {
+              window.location.href = 'login3.html';
+            }, 2000);
+          } else {
+            status.style.color = 'red';
+            status.textContent = data.error || 'Error al registrar.';
+            status.style.display = 'block';
+          }
+        } catch (error) {
+            status.style.color = 'red';
+            status.textContent = 'No se pudo conectar al servidor.';
+            status.style.display = 'block';
+        }
       } else {
+        status.style.color = 'red';
         status.textContent = 'Completa todos los campos.';
         status.style.display = 'block';
       }
