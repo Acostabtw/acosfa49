@@ -1,3 +1,4 @@
+console.log('>>> SERVER.JS CARGANDO...');
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -10,6 +11,11 @@ const PORT = process.env.PORT || 3050;
 // Middleware
 app.use(cors());
 app.use(express.json());
+// Identificador único para saber que este es el servidor correcto
+app.use((req, res, next) => {
+    res.setHeader('X-Server-Agent', 'Antigravity-Fix-01');
+    next();
+});
 // Servir archivos estáticos desde el directorio actual
 app.use(express.static(__dirname));
 
