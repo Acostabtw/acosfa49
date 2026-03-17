@@ -52,9 +52,15 @@ app.post('/registro', (req, res) => {
     const sql = `INSERT INTO registro (nombre, apellido, correo, contraseña) VALUES (?, ?, ?, ?)`;
     db.query(sql, [nombre, apellido, correo, password], (err, results) => {
         if (err) {
-            console.error(err);
-            // Manejo básico de error
-            return res.status(500).json({ error: 'Error al registrarse, este correo ya esta registrado.' });
+            console.error('❌ ERROR EN REGISTRO:', err);
+            
+            // Si el error es por duplicado (correo ya existe)
+            if (err.code === 'ER_DUP_ENTRY') {
+                return res.status(400).json({ error: 'Error al registrarse, este correo ya esta registrado.' });
+            }
+            
+            // Para cualquier otro error (problemas de conexión, tablas, etc.)
+            return res.status(500).json({ error: 'Error interno del servidor. Por favor, revisa la consola del servidor.' });
         }
         res.status(201).json({ message: 'Usuario registrado exitosamente', id: results.insertId });
     });
