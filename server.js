@@ -54,7 +54,7 @@ app.post('/registro', (req, res) => {
         if (err) {
             console.error(err);
             // Manejo básico de error
-            return res.status(500).json({ error: 'Error al registrar en la base de datos.' });
+            return res.status(500).json({ error: 'Error al registrarse, este correo ya esta registrado.' });
         }
         res.status(201).json({ message: 'Usuario registrado exitosamente', id: results.insertId });
     });
