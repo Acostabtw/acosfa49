@@ -81,7 +81,7 @@
             }, 2000);
           } else {
             status.style.color = 'red';
-            status.textContent = data.error || 'Error al registrar.';
+            status.textContent = data.detalles ? `${data.error} (${data.detalles})` : (data.error || 'Error al registrar.');
             status.style.display = 'block';
           }
         } catch (error) {

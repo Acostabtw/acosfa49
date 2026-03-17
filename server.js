@@ -60,9 +60,12 @@ app.post('/registro', (req, res) => {
         if (err) {
             console.error('❌ ERROR EN REGISTRO:', err);
             
-            // Si el error es por duplicado (correo ya existe)
+            // Si el error es por duplicado (correo u otro campo UNIQUE)
             if (err.code === 'ER_DUP_ENTRY') {
-                return res.status(400).json({ error: 'Error al registrarse, este correo ya esta registrado.' });
+                return res.status(400).json({ 
+                    error: 'Error al registrarse: un campo ya existe.', 
+                    detalles: err.sqlMessage 
+                });
             }
             
             // Para cualquier otro error (problemas de conexión, tablas, etc.)
